@@ -1,7 +1,7 @@
 import express from "express";
 import mongoose from "mongoose";
 import dotenv from 'dotenv';
-import commentRoute from './routes/commentRoute'
+import postRoute from './routes/postRoute'
 
 dotenv.config();
 
@@ -20,6 +20,6 @@ mongoose.connect(process.env.MONGODB_URI!)
     
 })
 
-app.use('/',commentRoute)
+app.use('/',postRoute)
 
 app.listen(port,()=>console.log(`server is running on http://localhost:${port}`))

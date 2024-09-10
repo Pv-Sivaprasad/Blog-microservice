@@ -8,40 +8,21 @@ export const isLoggedIn= async(req:Request,res:Response,next:NextFunction) =>{
 
     console.log('started from here');
     
-    // try {
-
-    //     const token = req.header('Authorization')?.split(' ')[1];
-    //         console.log(token,'aksdfjkahsdfajhfkadjsfk');
-            
-    //     if(!token) return res.status(401).json({error:'Access denied ,not valid'})
-    //         console.log('the secret', process.env.JWT_SECRET);
-            
-    //         const decoded = jwt.verify(token, process.env.JWT_SECRET as string);    
-    //             console.log(decoded,'asdkfhgdfghiusfhjsfb');
-                
-    //         (req as any).user = decoded;
-    //         console.log('forwarded from here');
-            
-    //         next()
-
-
-
-    // } catch (error) {
-    //     return res.status(401).json({error:'Invalid or expired token'})
-    // }
+    
     try {
         const token = req.header('Authorization')?.split(' ')[1];
-        console.log(token, 'Token received');
+        
+        console.log(token,'==================================');
+        
         
         if (!token) {
             return res.status(401).json({ error: 'Access denied, no token provided' });
         }
         
-        console.log('JWT_SECRET:', process.env.JWT_SECRET);
-    
         try {
             const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
-            console.log('Decoded:', decoded);
+            console.log(decoded,'[[[[]]]]]]]]]]]]]]]]]]]]]]]]]]]]]');
+            
             (req as any).user = decoded;
             next();
         } catch (err) {
