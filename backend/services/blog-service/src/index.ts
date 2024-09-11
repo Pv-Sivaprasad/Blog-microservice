@@ -22,4 +22,4 @@ mongoose.connect(process.env.MONGODB_URI!)
 
 app.use('/',postRoute)
 
-app.listen(port,()=>console.log(`server is running on http://localhost:${port}`))
+app.listen(port,()=>console.log(`post service is running on http://localhost:${port}`))

@@ -28,4 +28,4 @@ mongoose.connect(process.env.MONGODB_URI!)
 app.use('/',userRoute)
 
 
-app.listen(port,()=>{console.log(`server is running on http://localhost:${port}`)})
+app.listen(port,()=>{console.log(`user service is running on http://localhost:${port}`)})
