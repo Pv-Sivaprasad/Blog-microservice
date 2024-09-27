@@ -5,7 +5,9 @@ let connection: Connection
 
 export const connectRabbitMq = async () => {
     try {
-        connection = await amqp.connect('amqp://localhost')
+        console.log('going to connect');
+        
+        connection = await amqp.connect('amqp://magical_shockley:5672')
         console.log('rabbitmq connected in the blogservice');
         channel = await connection.createChannel()
 
