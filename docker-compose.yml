@@ -5,24 +5,31 @@ services:
     image: rabbitmq:3-management
     container_name: rabbitmq
     ports:
-      - "5672:5672"    # RabbitMQ port
-      - "15672:15672"  # RabbitMQ Management UI port
+      - "5672:5672"    
+      - "15672:15672"  
     networks:
       - blog-network
 
   gateway:
     build:
-      context: ./backend/gateway   # Path to your gateway service
+      context: ./backend/gateway   
+      dockerfile: Dockerfile
+    container_name: sivaprasadpv/gateway
     ports:
       - "6000:6000"
     depends_on:
       - rabbitmq
+      - user-service
+      - blog-service
+      - comment-service
     networks:
       - blog-network
 
   user-service:
     build:
-      context: ./backend/service/user-service   # Path to your user service
+      context: ./backend/services/user-service  
+      dockerfile: Dockerfile
+    container_name: sivaprasadpv/user-service
     ports:
       - "6500:6500"
     depends_on:
@@ -32,7 +39,9 @@ services:
 
   comment-service:
     build:
-      context: ./backend/service/comment-service   # Path to your comment service
+      context: ./backend/services/comment-service 
+      dockerfile: Dockerfile  
+    container_name: sivaprasadpv/comment-service
     ports:
       - "6700:6700"
     depends_on:
@@ -42,7 +51,9 @@ services:
 
   blog-service:
     build:
-      context: ./backend/service/blog-service   # Path to your blog service
+      context: ./backend/services/blog-service   
+      dockerfile: Dockerfile
+    container_name: sivaprasadpv/blog-service
     ports:
       - "6600:6600"
     depends_on:
