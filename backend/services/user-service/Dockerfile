@@ -1,0 +1,11 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY  package.json package-lock.json ./
+
+RUN npm install
+
+EXPOSE 6500
+
+CMD [ "npm","run","start" ]

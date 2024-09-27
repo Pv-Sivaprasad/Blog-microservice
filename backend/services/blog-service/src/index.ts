@@ -2,6 +2,8 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from 'dotenv';
 import postRoute from './routes/postRoute'
+import { connectRabbitMq } from "./config/rabbitmq";
+import { recieveUserFromQueue } from "./events/rabbitmq/userConsumer";
 
 dotenv.config();
 
@@ -19,6 +21,11 @@ mongoose.connect(process.env.MONGODB_URI!)
     console.log('error connecting to db');
     
 })
+
+connectRabbitMq().then(()=>{
+    recieveUserFromQueue()
+})
+
 
 app.use('/',postRoute)
 
