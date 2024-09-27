@@ -2,7 +2,7 @@ import express from 'express'
 import {createProxyMiddleware} from 'http-proxy-middleware'
 
 
-const app=express()
+const app=express()  
 
 
 app.use('/user',createProxyMiddleware({target:'http://localhost:6500',changeOrigin:true}))

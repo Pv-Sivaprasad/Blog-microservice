@@ -2,6 +2,7 @@ import  express  from "express";
 import mongoose from "mongoose";
 import userRoute from './routes/userRoute'
 import dotenv from 'dotenv';
+import { connectRabbitMQ } from "./config/rabbitmq";
 
 
 dotenv.config();
@@ -24,7 +25,7 @@ mongoose.connect(process.env.MONGODB_URI!)
     
 })
 
-
+connectRabbitMQ()
 app.use('/',userRoute)
 
 

@@ -6,6 +6,8 @@ let connection:Connection
 
 
 export const connectRabbitMQ=async()=>{
+    console.log('reached here=============');
+    
     try {
         
         connection=await amqp.connect('amqp://localhost')
@@ -13,7 +15,7 @@ export const connectRabbitMQ=async()=>{
         
         channel=await connection.createChannel()
     } catch (error) {
-        console.log('failed to connect to rabbit mq',error);
+        console.log('failed to connect to  user service rabbit mq ',error);
         
     }
 }

@@ -7,7 +7,7 @@ dotenv.config()
 export const isLoggedIn= async(req:Request,res:Response,next:NextFunction) =>{
 
     console.log('started from here');
-    
+     
     
     try {
         const token = req.header('Authorization')?.split(' ')[1];
